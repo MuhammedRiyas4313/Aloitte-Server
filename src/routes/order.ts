@@ -13,12 +13,8 @@ router.post('/', authenticate, (req: Request, res: Response, next: NextFunction)
     orderController.placeOrder(req, res, next)
 );
 
-// router.post('/:id', authenticate, (req: Request, res: Response, next: NextFunction) =>
-//     cartController.removeFromCart(req, res, next)
-// );
-
-// router.get('/', authenticate, (req: Request, res: Response, next: NextFunction) =>
-//     cartController.getCart(req, res, next)
-// );
+router.get('/', authenticate, (req: Request, res: Response, next: NextFunction) =>
+    orderController.getOrderHistory(req, res, next)
+);
 
 export default router;

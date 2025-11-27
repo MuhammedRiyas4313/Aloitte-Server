@@ -6,7 +6,7 @@ export class TokenService {
     generateAccessToken(payload: JwtPayload) {
         const accessToken = sign(payload, Config.ACEESS_TOKEN_SECRET!, {
             algorithm: 'HS256',
-            expiresIn: '1m',
+            expiresIn: '1hr',
             issuer: 'ecom-server',
         });
         // console.log("accessToken",accessToken)

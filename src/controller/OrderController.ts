@@ -23,4 +23,19 @@ export class OrderController {
             return;
         }
     }
+
+    async getOrderHistory(req: Request, res: Response, next: NextFunction) {
+        const _req = req as AuthUser;
+        const userId = Number(_req.auth.sub);
+
+        try {
+            const orders = await this.orderService.getOrders(userId);
+            this.logger.info('order placed successfully');
+
+            res.status(201).json(orders);
+        } catch (error) {
+            next(error);
+            return;
+        }
+    }
 }

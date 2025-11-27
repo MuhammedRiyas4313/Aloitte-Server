@@ -47,4 +47,30 @@ export class OrderService {
             throw error;
         }
     }
+
+    async getOrders(userId: number) {
+        try {
+            const orders = await Order.findAll({
+                where: {
+                    userId,
+                },
+                include: [
+                    {
+                        model: OrderItem,
+                        include: [
+                            {
+                                model: Product,
+                            },
+                        ],
+                    },
+                ],
+            });
+
+            return orders;
+        } catch (err) {
+            console.error('order history fetch API error:', err);
+            const error = createHttpError(500, 'Error while  fetch orders');
+            throw error;
+        }
+    }
 }
