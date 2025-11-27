@@ -26,4 +26,16 @@ router.patch(
         categoryController.updateCategory(req, res, next)
 );
 
+router.delete(
+    '/:id',
+    authenticate,
+    canAccess(['admin']),
+    (req: Request, res: Response, next: NextFunction) =>
+        categoryController.deleteCategory(req, res, next)
+);
+
+router.get('/', authenticate, (req: Request, res: Response, next: NextFunction) =>
+    categoryController.getCategoryList(req, res, next)
+);
+
 export default router;

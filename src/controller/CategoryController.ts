@@ -1,4 +1,4 @@
-import { NextFunction, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { Logger } from 'winston';
 import { CategoryService } from '../services/categoryService';
 import { CreateCategoryInput } from '../types';
@@ -42,7 +42,33 @@ export class CategoryController {
                 id: categoryId,
             });
 
-            res.status(201).json({ id: categoryId });
+            res.json({ id: categoryId });
+        } catch (error) {
+            next(error);
+            return;
+        }
+    }
+
+    async deleteCategory(req: Request, res: Response, next: NextFunction) {
+        //while delete category de;ete products  under category
+        const categoryId = req.params.id;
+        try {
+            await this.categoryService.delete(Number(categoryId));
+            this.logger.info('category deleted successfully', {
+                id: categoryId,
+            });
+
+            res.json({ id: categoryId });
+        } catch (error) {
+            next(error);
+            return;
+        }
+    }
+
+    async getCategoryList(req: Request, res: Response, next: NextFunction) {
+        try {
+            const categories = await this.categoryService.getList();
+            res.status(200).json(categories);
         } catch (error) {
             next(error);
             return;
