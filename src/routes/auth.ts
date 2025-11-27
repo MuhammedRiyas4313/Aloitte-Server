@@ -3,9 +3,9 @@ import { AuthController } from '../controller/AuthController';
 import logger from '../config/logger';
 import { UserService } from '../services/userService';
 import { TokenService } from '../services/tokenService';
-import registerValidator from '../validators/register-validator';
+import registerValidator from '../validators/auth/register-validator';
 import { CredentialService } from '../services/credentialService';
-import loginValidator from '../validators/login-validator';
+import loginValidator from '../validators/auth/login-validator';
 const router = express.Router();
 
 const userService = new UserService();
