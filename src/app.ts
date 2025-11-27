@@ -7,6 +7,7 @@ import { Config } from './config';
 import authRouter from '../src/routes/auth';
 import categoryRouter from '../src/routes/category';
 import productRouter from '../src/routes/product';
+import cartRouter from '../src/routes/cart';
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
+app.use('/cart', cartRouter);
 
 //error handler
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

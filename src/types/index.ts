@@ -19,6 +19,12 @@ export interface ProductBody {
     categoryId: number;
 }
 
+export interface CartInput {
+    quantity: number;
+    PriceAtAdd: number;
+    productId: number;
+}
+
 export interface ProductImage {
     product: Express.Multer.File[];
 }
@@ -41,6 +47,10 @@ export interface CreateCategoryInput extends Request {
 
 export interface ProductCreateInput extends Request {
     body: ProductBody;
+}
+
+export interface RequestCartInput extends Request {
+    body: CartInput;
 }
 
 export type registerUserData = {
@@ -68,6 +78,13 @@ export type ProductInput = {
     stock: number;
     categoryId: number;
     imageUrl: string;
+};
+
+export type CartData = {
+    quantity: number;
+    PriceAtAdd: number;
+    productId: number;
+    userId: number;
 };
 export interface AuthUser extends Request {
     auth: {
