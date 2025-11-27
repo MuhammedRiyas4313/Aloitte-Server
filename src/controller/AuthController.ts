@@ -70,7 +70,7 @@ export class AuthController {
                 maxAge: 1000 * 60 * 60 * 24 * 365, //1 year
             });
 
-            res.status(201).json({ id: userCreated.id });
+            res.status(201).json({ id: userCreated.id, message: 'Registered Successfully' });
         } catch (error) {
             next(error);
             return;
@@ -150,7 +150,7 @@ export class AuthController {
 
             this.logger.info('logged in succesfully', { id: user.id });
 
-            res.json({ id: user.id });
+            res.json({ id: user.id, message: 'Logged in Successfully' });
         } catch (error) {
             next(error);
             return;

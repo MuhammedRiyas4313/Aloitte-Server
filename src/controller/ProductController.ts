@@ -59,7 +59,7 @@ export class ProductController {
                 id: product.id,
             });
 
-            res.status(201).json({ id: product.id });
+            res.status(201).json({ id: product.id, message: 'Product created successfully' });
         } catch (error) {
             next(error);
             return;
@@ -164,11 +164,11 @@ export class ProductController {
                 Number(productId)
             );
 
-            this.logger.info('category updated successfully', {
-                id: categoryId,
+            this.logger.info('product updated successfully', {
+                id: productId,
             });
 
-            res.json({ id: categoryId });
+            res.json({ id: productId, message: 'Product updated successfully' });
         } catch (error) {
             next(error);
             return;

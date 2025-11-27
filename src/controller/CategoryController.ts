@@ -27,11 +27,14 @@ export class CategoryController {
 
         try {
             const categoryCreated = await this.categoryService.create({ name, description });
-            this.logger.info('category created successfully', {
+            this.logger.info('Category created successfully', {
                 id: categoryCreated.id,
             });
 
-            res.status(201).json({ id: categoryCreated.id });
+            res.status(201).json({
+                id: categoryCreated.id,
+                message: 'Category created successfully',
+            });
         } catch (error) {
             next(error);
             return;
@@ -55,7 +58,7 @@ export class CategoryController {
                 id: categoryId,
             });
 
-            res.json({ id: categoryId });
+            res.json({ id: categoryId, message: 'Category updated successfully' });
         } catch (error) {
             next(error);
             return;
@@ -71,7 +74,7 @@ export class CategoryController {
                 id: categoryId,
             });
 
-            res.json({ id: categoryId });
+            res.json({ id: categoryId, message: 'Category deleted successfully' });
         } catch (error) {
             next(error);
             return;

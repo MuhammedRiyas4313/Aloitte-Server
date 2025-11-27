@@ -32,7 +32,7 @@ export class CartController {
             });
             this.logger.info('item added to cart successfully', { id: cart.id });
 
-            res.status(201).json({ id: cart.id });
+            res.status(201).json({ id: cart.id, message: 'Item added to cart successfully' });
         } catch (error) {
             next(error);
             return;
@@ -45,7 +45,7 @@ export class CartController {
 
         try {
             const cart = await this.cartService.getCart(userId);
-            this.logger.info('  cart fetch successfully', { count: cart.count });
+            this.logger.info('cart fetch successfully', { count: cart.count });
 
             res.status(201).json(cart);
         } catch (error) {
@@ -62,9 +62,9 @@ export class CartController {
 
         try {
             await this.cartService.removeCart(userId, Number(cartId));
-            this.logger.info('  cart fetch successfully', { id: cartId });
+            this.logger.info('item removed from cart successfully', { id: cartId });
 
-            res.status(201).json({ id: cartId });
+            res.status(201).json({ id: cartId, message: 'Item removed from cart successfully' });
         } catch (error) {
             next(error);
             return;

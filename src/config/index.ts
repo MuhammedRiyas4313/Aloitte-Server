@@ -18,9 +18,11 @@ const {
     CLOUDINARY_CLOUD_NAME,
     CLOUDINARY_API_KEY,
     CLOUDINARY_API_SECRET,
+    BASE_URL,
 } = process.env;
 
 export const Config = {
+    BASE_URL,
     PORT,
     NODE_ENV,
     CORS_ORIGIN,

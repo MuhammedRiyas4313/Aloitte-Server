@@ -3,6 +3,9 @@ import { HttpError } from 'http-errors';
 import logger from './config/logger';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
+
 import { Config } from './config';
 import authRouter from '../src/routes/auth';
 import categoryRouter from '../src/routes/category';
@@ -22,6 +25,9 @@ app.use(
 app.use(express.static('public', { dotfiles: 'allow' }));
 app.use(cookieParser());
 app.use(express.json());
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/auth', authRouter);
 app.use('/category', categoryRouter);

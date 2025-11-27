@@ -17,7 +17,7 @@ export class OrderController {
 
             this.logger.info('order placed successfully', { id: order.id });
 
-            res.status(201).json({ id: order.id });
+            res.status(201).json({ id: order.id, message: 'Order placed successfully' });
         } catch (error) {
             next(error);
             return;
