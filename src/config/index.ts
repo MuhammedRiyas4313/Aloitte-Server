@@ -5,7 +5,17 @@ config({
     path: path.join(__dirname, `../../.env.${process.env.NODE_ENV || 'dev'}`),
 });
 
-const { PORT,NODE_ENV,CORS_ORIGIN,DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME} = process.env;
+const {
+    PORT,
+    NODE_ENV,
+    CORS_ORIGIN,
+    DB_HOST,
+    DB_USERNAME,
+    DB_PASSWORD,
+    DB_NAME,
+    ACEESS_TOKEN_SECRET,
+    REFRESH_TOKEN_SECRET,
+} = process.env;
 
 export const Config = {
     PORT,
@@ -14,5 +24,7 @@ export const Config = {
     DB_HOST,
     DB_USERNAME,
     DB_PASSWORD,
-    DB_NAME
+    DB_NAME,
+    ACEESS_TOKEN_SECRET,
+    REFRESH_TOKEN_SECRET,
 };
