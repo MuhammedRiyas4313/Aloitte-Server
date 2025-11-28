@@ -10,4 +10,8 @@ export const sequelize = new Sequelize(database, username, password, {
     host: host,
     dialect: 'postgres',
     logging: false,
+    // ssl:{
+    //     rej
+    // },
+    // pool:''
 });
