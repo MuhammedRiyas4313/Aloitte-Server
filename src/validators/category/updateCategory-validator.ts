@@ -3,9 +3,11 @@ import { checkSchema } from 'express-validator';
 export const updateCategoryValidator = checkSchema({
     name: {
         in: ['body'],
-        optional: true,
         isString: {
             errorMessage: 'Category name must be a string',
+        },
+        notEmpty: {
+            errorMessage: 'Category name is required',
         },
         trim: true,
     },

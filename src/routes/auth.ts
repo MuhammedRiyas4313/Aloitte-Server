@@ -47,7 +47,7 @@ const authController = new AuthController(logger, userService, tokenService, cre
  *     RegisterResponse:
  *       type: object
  *       properties:
- *         id:
+ *          id:
  *           type: number
  *           example: 14
  *          message:

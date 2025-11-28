@@ -33,9 +33,17 @@ export class OrderService {
 
                 //stock
                 const productId = item.productId;
+                const product = await Product.findByPk(productId);
+
+                if (!product) {
+                    throw createHttpError(400, 'Product not found');
+                }
+                if (product.stock < item.quantity) {
+                    throw createHttpError(500, `Insufficient stock for product ,${product.name}`);
+                }
+
                 await Product.decrement({ stock: item.quantity }, { where: { id: productId } });
             }
-
             //clear cart
 
             await Cart.destroy({ where: { userId } });

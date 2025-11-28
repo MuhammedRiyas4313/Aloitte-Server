@@ -140,7 +140,7 @@ const categoryController = new CategoryController(logger, categoryService);
  *       403:
  *         description: Admin access required
  *
- *   delete:
+ *   delete/{id}:
  *     summary: Delete a category
  *     tags: [Category]
  *     security:
