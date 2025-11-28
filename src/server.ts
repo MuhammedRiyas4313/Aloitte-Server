@@ -44,10 +44,12 @@ const startServer = async () => {
         await sequelize.sync({ alter: true });
         console.log('Connection has been established successfully.');
         await adminUserCreate();
-        app.listen(PORT, () => {
-            // console.log(`server is running on ${Config.PORT}`);
-            logger.info('ecommerce server is running', { PORT });
-        });
+        if (Config.NODE_ENV !== 'production') {
+            app.listen(PORT, () => {
+                // console.log(`server is running on ${Config.PORT}`);
+                logger.info('ecommerce server is running', { PORT });
+            });
+        }
     } catch (error) {
         console.log(error);
         logger.error('error while running server', { PORT });
