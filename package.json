@@ -13,7 +13,8 @@
     "test": "jest --no-cache --coverage --all --runInBand",
     "test:watch": "jest --watch --runInBand",
     "build": "tsc",
-    "prepare": "husky"
+    "prepare": "husky",
+    "vercel-build": "npm run build"
   },
   "author": "janna",
   "license": "ISC",
