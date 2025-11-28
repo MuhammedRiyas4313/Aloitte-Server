@@ -31,6 +31,9 @@ app.use(express.json());
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+//index route
+app.get('/', (req, res) => console.log("Aloitte server is running!"));
+
 app.use('/auth', authRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
